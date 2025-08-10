@@ -1,0 +1,22 @@
+mkdir -p .devcontainer
+cat > .devcontainer/devcontainer.json << 'JSON'
+{
+  "name": "customer-segmentation-mlops",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  "postCreateCommand": "pip install -r requirements.txt && pip install pyarrow",
+  "forwardPorts": [8000, 8501],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "charliermarsh.ruff",
+        "ms-azuretools.vscode-docker"
+      ]
+    }
+  }
+}
+JSON
+git add .devcontainer/devcontainer.json
+git commit -m "Add devcontainer for Codespaces"
+git push
